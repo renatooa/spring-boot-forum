@@ -32,6 +32,7 @@ import br.com.alura.forum.controller.form.TopicoForm;
 import br.com.alura.forum.modelo.Topico;
 import br.com.alura.forum.repository.CursoRepository;
 import br.com.alura.forum.repository.TopicoRepository;
+import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("/topicos")
@@ -45,6 +46,7 @@ public class TopicosController {
 	
 	@GetMapping
 	@Cacheable(value = "listaDeTopicos")
+	@ApiOperation(value = "Recupera todos os topicos")
 	public Page<TopicoDto> lista(@RequestParam(required = false) String nomeCurso, 
 			@PageableDefault(sort = "dataCriacao", direction = Direction.DESC, page = 0, size = 10) Pageable paginacao) {
 		

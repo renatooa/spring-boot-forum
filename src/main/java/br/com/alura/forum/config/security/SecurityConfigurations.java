@@ -45,8 +45,8 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-		.antMatchers("/h2query").permitAll()
-		.antMatchers("/h2query/**").permitAll()
+		.antMatchers("/actuator/**", "/swagger-ui/**", "**/api-docs/**", "/swagger-resources/**").permitAll()
+		.antMatchers("/h2query", "/h2query/**").permitAll()
 		.antMatchers(HttpMethod.GET, "/topicos").permitAll()
 		.antMatchers(HttpMethod.GET, "/topicos/*").permitAll()
 		.antMatchers(HttpMethod.POST, "/auth").permitAll()
